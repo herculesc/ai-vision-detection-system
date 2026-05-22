@@ -1,0 +1,30 @@
+# Python env
+Lib/
+Scripts/
+etc/
+share/
+pyvenv.cfg
+venv/
+env/
+
+# Cache
+__pycache__/
+*.pyc
+
+# Outputs
+outputs/
+uploads/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model weights (opcional)
+*.pt
+
+# Logs
+*.log
