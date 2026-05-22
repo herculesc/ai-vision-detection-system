@@ -1,92 +1,68 @@
 # 🧠 AI Vision Detection System
 
-Computer Vision system built with Python, FastAPI, YOLO and Streamlit for real-time people detection and counting.
+A real-time Computer Vision SaaS that detects and counts objects in images using YOLO, FastAPI, and Streamlit.
 
-This project demonstrates a complete AI application pipeline, including:
-
-* Computer Vision inference with YOLO
-* FastAPI backend API
-* Interactive Streamlit frontend
-* Image upload and processing
-* Object detection visualization
-* SaaS-style interface
+This project demonstrates a complete end-to-end AI product pipeline — from model inference to API deployment and interactive web interface.
 
 ---
 
-# 📸 Demo
+## 🚀 What this system does
 
-## 🖼️ Application Interface
+This system transforms images into actionable insights using Computer Vision.
 
-> Add screenshots of your application here.
+It can:
 
-### Original Image
-
-```text
-assets/original_image.png
-```
-
-![Original Image](assets/original_image.png)
+- Detect objects using YOLO (People, vehicles, general objects)
+- Count detected instances in real time
+- Generate annotated images with bounding boxes
+- Provide results via REST API (FastAPI)
+- Display results in a SaaS-style web interface (Streamlit)
 
 ---
 
-### Processed Detection Result
+## 💡 Why this project matters
 
-```text
-assets/detection_result.png
-```
+This project demonstrates how a Computer Vision system moves from research to production:
 
-![Detection Result](assets/detection_result.png)
+- Model inference with YOLO
+- Backend API development with FastAPI
+- Frontend integration with Streamlit
+- Full pipeline deployment architecture
+- Real-world AI application design
 
----
-
-# 🎥 Video Demo
-
-> Add a demo video/GIF of the system running.
-
-## Example:
-
-```text
-assets/demo.gif
-```
-
-![Demo Video](assets/demo.gif)
-
-You can also add a YouTube demo link:
-
-```text
-https://youtube.com/your-demo-link
-```
+👉 This is not just a model — it is a deployable AI system.
 
 ---
 
-# 🚀 Features
+## 🧠 Key Features
 
-* ✅ People detection using YOLO
-* ✅ FastAPI backend
-* ✅ Streamlit SaaS-style frontend
-* ✅ Image upload support
-* ✅ Object counting
-* ✅ Processed image visualization
-* ✅ REST API integration
-* ✅ Modular project structure
+- ✅ YOLO-based object detection
+- ✅ Real-time image processing
+- ✅ Object counting system
+- ✅ FastAPI REST backend
+- ✅ Streamlit SaaS-style frontend
+- ✅ Image upload and visualization
+- ✅ Modular and scalable architecture
+- ✅ Ready for deployment
 
 ---
 
-# 🏗️ System Architecture
+## 🏗️ System Architecture
 
 ```text
-Frontend (Streamlit)
+User Upload Image
         ↓
-FastAPI REST API
+Streamlit Frontend (UI Layer)
         ↓
-YOLO Computer Vision Model
+FastAPI Backend (API Layer)
         ↓
-OpenCV Processing
+YOLO Model Inference (AI Layer)
         ↓
-Detection Results + Visualization
-```
-
----
+OpenCV Processing (Vision Layer)
+        ↓
+Return:
+- Bounding boxes image
+- Object count
 
 # 🧰 Tech Stack
 
@@ -120,15 +96,15 @@ Detection Results + Visualization
 ai-vision-detection-system/
 │
 ├── app/
-│   ├── main.py
-│   ├── model.py
-│   ├── utils.py
+│   ├── main.py              # FastAPI backend
+│   ├── model.py            # YOLO inference logic
+│   ├── utils.py            # helper functions
 │
-├── uploads/
-├── outputs/
-├── assets/
+├── uploads/               # uploaded images
+├── outputs/               # processed images
+├── assets/                # demo images & gifs
 │
-├── streamlit_app.py
+├── streamlit_app.py       # frontend UI
 ├── requirements.txt
 ├── .gitignore
 └── README.md
