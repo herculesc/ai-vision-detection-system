@@ -3,16 +3,16 @@ import cv2
 import shutil
 import os
 
-from app.model import get_model
-from app.utils import draw_people_only, count_people
+from backend.app.model import get_model
+from backend.app.utils import draw_people_only, count_people
 import numpy as np
 
 app = FastAPI(title="People Counter API")
 
 model = get_model()
 
-UPLOAD_DIR = "uploads"
-OUTPUT_DIR = "outputs"
+UPLOAD_DIR = os.path.join("app", "uploads")
+OUTPUT_DIR = os.path.join("app", "outputs")
 
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)

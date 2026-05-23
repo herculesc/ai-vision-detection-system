@@ -53,6 +53,7 @@ if uploaded_file:
 
         if response.status_code == 200:
             data = response.json()
+            #print(data)
 
             # RIGHT - RESULTS
             with col2:
