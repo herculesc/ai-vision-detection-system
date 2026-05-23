@@ -1,146 +1,197 @@
-# 🧠 AI Vision Detection System
+# 🧠 AI Vision SaaS — People Detection System
 
-A real-time Computer Vision SaaS that detects and counts objects in images using YOLO, FastAPI, and Streamlit.
+A full-stack Computer Vision SaaS application that detects and counts people in images using **YOLO, FastAPI, and Streamlit**, with **JWT authentication and secure API access**.
 
-This project demonstrates a complete end-to-end AI product pipeline — from model inference to API deployment and interactive web interface.
+This project demonstrates a production-style AI system with authentication, API protection, and a modern web interface.
 
 ---
 
 ## 🚀 What this system does
 
-This system transforms images into actionable insights using Computer Vision.
+This system turns image uploads into structured AI insights in real time.
 
 It can:
 
-- Detect objects using YOLO (People, vehicles, general objects)
-- Count detected instances in real time
-- Generate annotated images with bounding boxes
-- Provide results via REST API (FastAPI)
-- Display results in a SaaS-style web interface (Streamlit)
+* 🔐 Authenticate users using JWT tokens
+* 🧠 Detect people in images using YOLO
+* 🔢 Count detected objects in real time
+* 🖼️ Generate annotated images with bounding boxes
+* 🌐 Serve results via REST API (FastAPI)
+* 💻 Provide a SaaS-style web interface (Streamlit)
+* 🔒 Protect AI endpoints with authentication
+
+---
+
+## 🔥 New Features (SaaS Upgrade)
+
+Compared to a basic AI demo, this version includes:
+
+* 🔐 Login system (JWT authentication)
+* 🛡️ Protected API endpoints (/detect secured)
+* 👤 Session-based frontend authentication
+* 🚪 Logout functionality
+* 🌐 REST API architecture (frontend/backend separation)
+* 📦 Image storage system (uploads & outputs)
+* 🔗 Image serving via API URL
+* 💼 SaaS-ready structure
 
 ---
 
 ## 💡 Why this project matters
 
-This project demonstrates how a Computer Vision system moves from research to production:
+This project simulates a real-world AI SaaS product architecture:
 
-- Model inference with YOLO
-- Backend API development with FastAPI
-- Frontend integration with Streamlit
-- Full pipeline deployment architecture
-- Real-world AI application design
+* AI model is isolated from UI
+* Backend exposes secure API endpoints
+* Frontend consumes API like a real product
+* Authentication layer protects resources
+* System is modular and scalable
 
-👉 This is not just a model — it is a deployable AI system.
+👉 This is a deployable AI SaaS prototype.
 
 ---
 
 ## 🧠 Key Features
 
-- ✅ YOLO-based object detection
-- ✅ Real-time image processing
-- ✅ Object counting system
-- ✅ FastAPI REST backend
-- ✅ Streamlit SaaS-style frontend
-- ✅ Image upload and visualization
-- ✅ Modular and scalable architecture
-- ✅ Ready for deployment
+* ✅ YOLO-based object detection
+* ✅ People counting system
+* ✅ JWT authentication system
+* ✅ Secure FastAPI backend
+* ✅ Streamlit SaaS frontend
+* ✅ Image upload and processing
+* ✅ Protected AI endpoints
+* ✅ Modular architecture (production-style)
+* ✅ REST API communication
 
 ---
 
 ## 🏗️ System Architecture
 
 ```text
-User Upload Image
-        ↓
-Streamlit Frontend (UI Layer)
-        ↓
-FastAPI Backend (API Layer)
-        ↓
-YOLO Model Inference (AI Layer)
-        ↓
-OpenCV Processing (Vision Layer)
-        ↓
+User
+   ↓
+Streamlit Frontend (Login + UI)
+   ↓
+JWT Authentication Request
+   ↓
+FastAPI Backend (/login)
+   ↓
+JWT Token Issued
+   ↓
+User uploads image
+   ↓
+Streamlit → /detect (with JWT token)
+   ↓
+FastAPI validates token
+   ↓
+YOLO Model Inference
+   ↓
+OpenCV Image Processing
+   ↓
+Save annotated image
+   ↓
 Return:
-- Bounding boxes image
-- Object count
+- People count
+- Image URL
 
-# 🧰 Tech Stack
+```
 
-## Backend
+---
+
+## 🔐 Authentication Flow
+
+```text
+Login Request
+   ↓
+FastAPI verifies credentials
+   ↓
+JWT token generated
+   ↓
+Token stored in Streamlit session
+   ↓
+Token sent in Authorization header
+   ↓
+Backend validates token on /detect
+```
+
+---
+
+## 🧰 Tech Stack
+
+### Backend
 
 * Python
 * FastAPI
 * Uvicorn
+* Python-JOSE (JWT)
+* Passlib (bcrypt)
 
-## Computer Vision
+### Computer Vision
 
-* YOLO
+* YOLO (Ultralytics)
 * OpenCV
 * PyTorch
-* Ultralytics
+* NumPy
 
-## Frontend
+### Frontend
 
 * Streamlit
 
-## Data Processing
+### System Design
 
-* NumPy
-* Pillow
+* REST API architecture
+* JWT authentication
+* Stateless backend design
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
 
 ```text
-ai-vision-detection-system/
+ai-vision-saas/
 │
-├── app/
-│   ├── main.py              # FastAPI backend
-│   ├── model.py            # YOLO inference logic
-│   ├── utils.py            # helper functions
+├── backend/
+│   ├── app/
+│   │   ├── main.py          # FastAPI entry point
+│   │   ├── auth.py          # JWT authentication logic
+│   │   ├── deps.py          # token validation dependency
+│   │   ├── model.py         # YOLO model loader
+│   │   ├── utils.py         # image processing helpers
+│   │
+│   ├── uploads/             # uploaded images
+│   ├── outputs/             # processed images
 │
-├── uploads/               # uploaded images
-├── outputs/               # processed images
-├── assets/                # demo images & gifs
+├── frontend/
+│   ├── streamlit_app.py     # SaaS UI (login + dashboard)
 │
-├── streamlit_app.py       # frontend UI
 ├── requirements.txt
-├── .gitignore
-└── README.md
+├── .env                     # secret keys (JWT)
+├── README.md
 ```
 
 ---
 
-# ⚙️ Installation
+## ⚙️ Installation
 
-## 1. Clone the repository
+### 1. Clone repository
 
 ```bash
-git clone https://github.com/yourusername/ai-vision-detection-system.git
+git clone https://github.com/yourusername/ai-vision-saas.git
+cd ai-vision-saas
 ```
 
 ---
 
-## 2. Create virtual environment
-
-### Windows
+### 2. Create virtual environment
 
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-### Linux / Mac
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
 ---
 
-## 3. Install dependencies
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -148,21 +199,21 @@ pip install -r requirements.txt
 
 ---
 
-# ▶️ Running the Project
+## ▶️ Running the Project
 
-## Start FastAPI backend
+### Start backend
 
 ```bash
-uvicorn app.main:app --reload
+uvicorn backend.app.main:app --reload
 ```
 
-Backend URL:
+Backend:
 
 ```text
 http://127.0.0.1:8000
 ```
 
-Swagger Docs:
+Docs:
 
 ```text
 http://127.0.0.1:8000/docs
@@ -170,13 +221,13 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## Start Streamlit frontend
+### Start frontend
 
 ```bash
-streamlit run streamlit_app.py
+streamlit run frontend/streamlit_app.py
 ```
 
-Frontend URL:
+Frontend:
 
 ```text
 http://localhost:8501
@@ -184,71 +235,95 @@ http://localhost:8501
 
 ---
 
-# 🧪 API Example
+## 🧪 API Endpoints
 
-## Endpoint
+### 🔐 Login
 
 ```http
-POST /count-people
+POST /login
 ```
 
----
-
-## Response Example
+Request:
 
 ```json
 {
-  "people_count": 3,
-  "output_image": "outputs/result.jpg"
+  "username": "admin",
+  "password": "1234"
+}
+```
+
+Response:
+
+```json
+{
+  "access_token": "jwt_token_here",
+  "token_type": "bearer"
 }
 ```
 
 ---
 
-# 📌 Future Improvements
+### 🧠 Detect People (Protected)
 
-* Video upload support
-* Real-time webcam detection
-* Object tracking
-* Detection confidence metrics
-* Cloud deployment
-* Multi-object detection
-* User authentication
-* Database integration
+```http
+POST /detect
+Authorization: Bearer <token>
+```
+
+Response:
+
+```json
+{
+  "people_count": 3,
+  "image_url": "http://127.0.0.1:8000/image/file.jpg"
+}
+```
 
 ---
 
-# 💼 Use Cases
+## 📌 Future Improvements
 
-* Smart surveillance
-* Crowd analysis
+* 📊 User dashboard (history of uploads)
+* 🧾 Database integration (PostgreSQL)
+* ☁️ Cloud deployment (AWS / Render)
+* 📹 Video detection support
+* 👥 Multi-user SaaS system
+* 💳 Payment system (Stripe)
+* 📈 Usage limits per user
+* 📦 Docker deployment
+
+---
+
+## 💼 Use Cases
+
+* Smart surveillance systems
+* Crowd analysis tools
 * Retail analytics
 * Traffic monitoring
-* Security systems
-* Computer Vision demos
+* Security AI systems
 * AI SaaS prototypes
+* Freelancer product demos (Fiverr / Upwork)
 
 ---
 
-# 👨‍💻 Author
+## 👨‍💻 Author
 
-## Hércules Carlos Dos Santos Pereira
+**Hércules Carlos**
 
-Machine Learning Engineer and Computer Vision Developer focused on:
+Machine Learning Engineer focused on:
 
-* Artificial Intelligence
 * Computer Vision
 * Deep Learning
-* Python APIs
 * AI Systems
+* Backend Development (FastAPI)
 
-### Links
-
-* GitHub: [https://github.com/herculesc](https://github.com/herculesc)
-* LinkedIn: Add your LinkedIn URL here
+GitHub: [https://github.com/herculesc](https://github.com/herculesc)
 
 ---
 
-# ⭐ If you liked this project
+## ⭐ If you like this project
 
-Consider giving the repository a star.
+Give it a ⭐ on GitHub — it helps a lot.
+
+👉 transformar isso em **portfólio que converte cliente (Fiverr/Upwork)**
+👉 ou montar versão “produto real com deploy + domínio”
