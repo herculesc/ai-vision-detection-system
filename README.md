@@ -5,6 +5,16 @@ A full-stack Computer Vision SaaS application that detects and counts people in 
 This project demonstrates a production-style AI system with authentication, API protection, and a modern web interface.
 
 ---
+## 🖥️ Product Demo
+
+### 🔐 Login Screen
+![Login](assets/login.png)
+
+### 🧠 Detection Demo
+![Demo](assets/detection.gif)
+
+### 🎥 Full Video
+👉 https://raw.githubusercontent.com/herculesc/ai-vision-detection-system/main/assets/detection.mp4
 
 ## 🚀 What this system does
 
